@@ -16,6 +16,8 @@
 \usepackage{graphicx} % TH Logo
 \usepackage{epstopdf} % EPS Support
 \usepackage{tabularx} % Table
+\usepackage{datetime} % Current date
+\usepackage{color}
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{-4pt plus 2pt minus 2pt}
 
@@ -41,7 +43,19 @@
 \newcommand{\type}[1]{\parbox{\columnwidth}{\large\textbf{#1}}}
 
 \begin{document}
-\pagenumbering{gobble}
+
+% Set footer:
+\pagestyle{fancy}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\dateseparator}{-}
+%\rfoot{ \fancyplain{}{\thepage} }
+\yyyymmdddate
+\definecolor{mygray}{gray}{0.5}
+\rfoot{\fancyplain{}{\color{mygray} \today}}
+
+
+
 \setlength{\columnsep}{0.5in}
 
 \begin{center}
