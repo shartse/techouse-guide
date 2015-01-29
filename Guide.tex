@@ -1,6 +1,6 @@
 \documentclass[letterpaper,10pt]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry} % Set paper margins
+\usepackage[top=0.75in, bottom=0.75in, left=0.75in, right=0.75in]{geometry} % Set paper margins
 
 \usepackage{booktabs} % for much better looking tables
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
@@ -18,6 +18,9 @@
 \usepackage{tabularx} % Table
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{-4pt plus 2pt minus 2pt}
+
+% http://tex.stackexchange.com/a/15124
+\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{#1}\quad\hrulefill}}
 
 \newcommand{\tosay}[1]{\textit{#1}}
 
@@ -38,12 +41,17 @@
 \newcommand{\type}[1]{\parbox{\columnwidth}{\large\textbf{#1}}}
 
 \begin{document}
-
 \pagenumbering{gobble}
-
 \setlength{\columnsep}{0.5in}
-\section*{\centering Personal Crisis Response Guide} 
-\begin{center}How to support a friend.\end{center} 
+
+\begin{center}
+\textsc{\huge\centering Personal Crisis Response Guide}  
+\end{center}
+
+\headline{\textit{how to support a friend}}
+
+\vfill
+
 \begin{multicols}{2}
 \begin{spacing}{1.15}
 \type{Psychological Crisis}
