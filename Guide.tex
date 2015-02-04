@@ -1,6 +1,6 @@
 \documentclass[letterpaper,10pt]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry} % Set paper margins
+\usepackage[top=0.75in, bottom=0.75in, left=0.75in, right=0.75in]{geometry} % Set paper margins
 
 \usepackage{booktabs} % for much better looking tables
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
@@ -15,118 +15,112 @@
 \usepackage{setspace}
 \usepackage{graphicx} % TH Logo
 \usepackage{epstopdf} % EPS Support
+\usepackage{tabularx} % Table
+\usepackage{datetime} % Current date
+\usepackage{color}
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{-4pt plus 2pt minus 2pt}
 
-\newcommand{\situation}[4]{\parbox{\columnwidth}{
-\textbf{#1} \hspace{\fill} \textit{#3} \\
-#4 \ifthenelse{\isempty{#2}}{}{\\ \textit{Available as #2.}}
-\vspace{12pt}}}
+% http://tex.stackexchange.com/a/15124
+\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{#1}\quad\hrulefill}}
 
+\newcommand{\tosay}[1]{\textit{#1}}
+
+\newcommand{\situation}[4]{
+
+\parbox{\columnwidth}{
+\textbf{#1} \hspace{\fill} \textit{#2} 
+
+
+#3 \ifthenelse{\isempty{#4}}{}{\\ \tosay{#4}}
+\vspace{6pt}}}
+
+\newcommand{\tip}[1]{
+
+\hangindent=2em\hangafter=1 
+#1}
 
 \newcommand{\type}[1]{\parbox{\columnwidth}{\large\textbf{#1}}}
+
 \begin{document}
-%\begin{crisis}{Personal Crisis Response Guide}{}
+
+% Set footer:
+\pagestyle{fancy}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\dateseparator}{-}
+%\rfoot{ \fancyplain{}{\thepage} }
+\yyyymmdddate
+\definecolor{mygray}{gray}{0.5}
+\rfoot{\fancyplain{}{\color{mygray} \today}}
+
+
+
 \setlength{\columnsep}{0.5in}
-\section*{\centering Personal Crisis Response Guide} 
-\begin{center}How to suport a friend.\end{center} 
+
+\begin{center}
+\textsc{\huge\centering Personal Crisis Response Guide}  
+\end{center}
+
+\headline{\textit{how to support a friend}}
+
+\vfill
+
 \begin{multicols}{2}
 \begin{spacing}{1.15}
 \type{Psychological Crisis}
 
-\situation{Immediate Response}{}{(401) 863 411}{
-Is immediate medical attention required? Is someone at risk of hurting themselves 
-or anyone else? If yes, call Brown EMS at (401) 863 4111.}
+\situation{Immediate Response}{(401) 863 411}{Is immediate medical attention required? Is someone at risk of hurting themselves or anyone else? If yes, call Brown EMS at (401) 863 4111.}{}
 
-\situation{Potential or Suspected Danger}{}{(401) 863 3476} {
-Are you concerned about someone? Has someone sent you something in which they seem 
-uncharacteristically sad or stressed? Call Brown Psychological Services at (401) 863 3476.}
-\situation{Care for Yourself}{} {(401) 863 3476} { If you are feel that you are
-in crisis, or that you are overcome by stress, sadness, or anger, call Brown
-Psychological Services at (401) 863 3476. }
-\situation{Before a Crisis}{}{(401) 863 3476} {
-Brown Psychological Services offers confidential counseling. Call them at (401)
-863 3476 to set up an appointment.}
+\situation{Potential or Suspected Danger}{(401) 863 3476} {Are you concerned about someone? Has someone sent you something in which they seem uncharacteristically sad or stressed? Call Brown Psychological Services at (401) 863 3476.}{}
+
+\situation{Care for Yourself}{(401) 863 3476} { If you are feel that you are in crisis, or that you are overcome by stress, sadness, or anger, call Brown Psychological Services at (401) 863 3476.}{}
+
+\situation{Before a Crisis}{(401) 863 3476} {Brown Psychological Services offers confidential counseling. Call them at (401) 863 3476 to set up an appointment.}{}
 
 \type{Communication Tips}
 
-\situation {What to do} {}{} {	
-\hangindent=2em
-\hangafter=2
-Allow your friend to remain in control: \textit{“How do you feel about
-reporting…”, “Would you like to speak with someone who can …”}
+\situation {What to do} {} {
+  \tip{Allow your friend to remain in control: \tosay{``How do you feel about reporting'', ``Would you like to speak with someone who can.''}}
+  \tip{Be empathetic, listen, believe, and validate: \tosay{``I'm here to listen and support you.'', ``It's okay to feel\ldots''}}
+  \tip{Know whom to call: speaking with a counselor can help your friend. \tosay{``I understand you may feel overwhelmed, and I'm not telling you what to do, but there are people in Brown who can help you.''}}
+  \tip{Help them find support: \tosay{``Is there someone you can talk to when you are having a difficult time?''}}
+}{}
 
-\hangindent=2em
-\hangafter=1
-Be empathetic, listen, believe, and validate: \textit{“I’m here to listen and
-support you.”, “It’s okay to feel…”}
 
-\hangindent=2em
-\hangafter=1
-Know whom to call: speaking with a counselor can help your friend. \textit{“I
-understand you may feel overwhelmed, and I’m not telling you what to do, but
-there are people in Brown who can help you.”}
+\situation {What not to do}{}{
+  \tip{Investigate: Help your friend, don't push them to answer questions.}
+  \tip{``Solve'' things: trying to fix things can make your friend feel nervous or powerless.}
+  \tip{Assume or name the experience: let your friend understand their experience in their own way without imposing your views.}
+}{}
 
-\hangindent=2em
-\hangafter=1
-Help them find support: \textit{“Is there someone you can talk to when you are
-having a difficult time?”}} 
-\situation {What not to do}{} {} {
-\hangindent=2em
-\hangafter=2
-Investigate: Help your friend, don’t push them to answer questions.
-
-\hangindent=2em
-\hangafter=1
-“Solve” things: trying to fix things can make your friend feel nervous or powerless.
-
-\hangindent=2em
-\hangafter=1
-Assume or name the experience: let your friend understand their experience in
-their own way without imposing your views.}
-
+\vfill
+\columnbreak
 \type{Sexual Assault} 
 
-\situation {Immediate Physical Safety} {} {(401) 863 4111} {
-Is your friend physically safe? If they are not, help them move to safety. Is
-immediate medical attention required? Call Brown EMS at (401) 863 4111.
+\situation {Immediate Physical Safety}{(401) 863 4111} {Is your friend physically safe? If they are not, help them move to safety. Is immediate medical attention required? Call Brown EMS at (401) 863 4111.}{``Are you somewhere safe?'', ``Are you injured? Do you need an ambulance?''}
 
-\textit{“Are you somewhere safe?”}
+\situation {Immediate Counseling Support}{(401) 863 6000} {Ask your friend for permission, then call Brown Sexual Assault Response Line at (401) 863 6000. They will guide you through the decisions that need to be made immediately.}{``There's a counselor on call, they can support you and help you think about your options. Would it be helpful to speak with her?'', ``Would you like me to call for you?''}
 
-\textit{“Are you injured? Do you need an ambulance?”}}
+\situation {Long-term Support}{(401) 863 2794} {If your friend has opened up to you some time after the assault, you can suggest that they contact the Coordinator of Sexual Assault Prevention and Advocacy at (401) 863 2794. They can help identify medical and legal options.}{}
 
-\situation {Immediate Counseling Support} {} {(401) 863 6000} {
-Ask your friend for permission, then call Brown Sexual Assault Response Line at
-(401) 863 6000. They will guide you through the decisions that need to be made
-immediately.
+\situation {Care for Yourself}{(401) 863 3476} {Helping a friend is difficult, consider going to Brown Psychological Services for confidential counseling. Call them at (401) 863 3476 for an appointment}{}
 
-\textit{“There’s a counselor on call, they can support you and help you think
-about your options. Would it be helpful to speak with her?”}
-
-\textit{“Would you like me to call for you?”}}
-
-\situation {Long-term Support} {} {(401) 863 2794} {
-If your friend has opened up to you some time after 
-the assault, you can suggest that they contact the Coordinator of Sexual Assault Prevention and 
-Advocacy at (401) 863 2794. They can help identify medical and legal options. }
-\situation {Care for Yourself}	{} {(401) 863 3476} {
-Helping a friend is difficult, consider going to Brown Psychological Services
-for confidential counseling. Call them at (401) 863 3476 for an appointment}
-
-\situation {Learn More}	{} {(401) 863 3476} {
-%\includegraphics{qrcode}
-				\url{goo.gl/W0NKRB}
-}
-\type{Contact Information}
+\situation {Learn More}{(401) 863 3476} {
 \begin{center}
-\begin{tabular}{ll}
+  \includegraphics{qrcode}\\[-16pt]
+  \url{goo.gl/W0NKRB}
+\end{center}
+}{}
+
+\type{Contact Information}
+\begin{tabularx}{\columnwidth}{@{}X m{0.3\columnwidth}@{}}
 	Sexual Assault Response                           & (401) 863 6000 \\
-	Sexual Assault Prevention \& \\ Advocacy Coordinator & (401) 863 2794 \\
+	Sexual Assault Prevention \& \\ \hspace{2em} Advocacy Coordinator & \parbox[c]{\hsize}{(401) 863 2794} \\
 	Psychological Services                            & (401) 863 3476 \\
 	University Health Services                        & (401) 863 1330 \\
-	Public Safety (Special Victims Unit)        			& (401) 863 2542              
-\end{tabular}
-\end{center}
+	Public Safety (Special Victims)              & (401) 863 2542 
+\end{tabularx}
 
 \end{spacing}
 \end{multicols}
